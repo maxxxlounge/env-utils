@@ -1,10 +1,11 @@
 package env_utils
 
 import (
-"os"
-"strconv"
-"github.com/pkg/errors"
 	"log"
+	"os"
+	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 func GetEnv(envKey string) (val string) {
@@ -21,7 +22,7 @@ func GetEnvInt(envKey string) (val int) {
 	valString := GetEnv(envKey)
 	valInt64, err := strconv.ParseInt(valString, 10, 64)
 	if err != nil {
-		err = errors.Wrapf(err,"error parsing string %s to int for env %s ", valString, envKey)
+		err = errors.Wrapf(err, "error parsing string %s to int for env %s ", valString, envKey)
 		log.Fatal(err.Error())
 		os.Exit(1)
 	}
